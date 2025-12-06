@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<xml>
+  <MSHelp:Attr Name="Locale" Value="kbEnglish"/>
+  <MSHelp:Attr Name="DocSet" Value="Sony Interactive Entertainment"/>
+</xml>
+<title>ATRAC9(TM) Library for PC Sample</title>
+
+<style type="text/css"> 
+ <!-- 
+			body { font-family: Arial, Verdana, Helvetica; font-size: 100% }
+			h1, h2, h3, h4, h5, h6 { color: #000000 }
+			h1 {margin: 8px 0;}
+			h2 {border-bottom:1px solid #999999; padding-bottom: 3px; }
+			a { color: DarkBlue; }
+			a:hover, a:active { color: #FF4500; }
+			a:visited { color: DarkRed; }
+			p {margin:0.8em 0;}
+                        ul { margin: 1px 0 1px 2em; padding: 0; }
+			li { font-size: 100% }
+			pre.source { font-size: 100%; font-family: monospace; background-color: #eee; 
+						   background-repeat: repeat; background-attachment: scroll; 
+						   overflow: auto; display: block; border: 1px dashed #aaa; 
+						   margin: 10px 0; padding: 5px; background-position: 0% }
+			div.title1 { color: #000000; font-size: 180%; padding-left: 5px }
+			div.title2 { color: #000000; font-size: 160%; padding-left: 5px }
+			div.title3 { color: #000000; font-size: 140%; padding-left: 5px }
+			div.note { background-color: MistyRose; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			div.index {  background-color: #eee; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			span.back-to-top { font-size: 70% }
+			div.indent { font-size: 100%; margin-left: 2em }
+			div.header { font-size: 70%; color:#666666; }
+			table { font-size: 100%; border-collapse: collapse; margin: 5px }
+			td { vertical-align: top; border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; padding-top: 3px; padding-bottom: 3px }
+			th { background-color: #f0f0f0; text-align: center; vertical-align: top; 
+						   border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; 
+		-->
+</style>
+
+</head> 
+<body>
+<div class="header">
+<p>SIE CONFIDENTIAL</p>
+<p>Copyright (C) 2020 Sony Interactive Entertainment Inc.</p>
+</div>
+
+<div class="introduction">
+<h1>ATRAC9(TM) Library for PC Sample</h1>
+<h2>Overview</h2>
+<div class="indent">
+
+Sample program for ATRAC9(TM) Library that performs encoding and decoding of ATRAC9(TM) files on Windows.
+
+</div>
+</div>
+
+<h2>Explanation</h2>
+<div class="indent">
+
+This sample performs encoding and decoding using ATRAC9(TM) library.<br/>
+Output of this sample is ATRAC9(TM) file by encoding and wav file by decoding.<br/>
+<br/>
+・Form of the encoding command<br/>
+　at9sample -e [options] srcfilename outputfilename<br/>
+　・Option of the encoding command<br/>
+　　-br N : bit rate<br/>
+　　　　　　(N = 36, 48, 60, 72, 84, 96, 120, 144, 168, 192, 240, 288, 300, 336, 360, 384, 420, 480, 504, 672)<br/>
+　　-supframeon : encode in superframe mode (default)<br/>
+　　-supframeoff : not encode in superframe mode<br/>
+　　-dual : encode as dual mono<br/>
+　　-nbands N : encode band<br/>
+　　　　　　　　　　(N = 3～18)<br/>
+　　-isband N : intensity stereo start band<br/>
+　　　　　　　　　　(N = -1, 3～18)<br/>
+　　-gradmode : encode mode (quantization noise gradient)<br/>
+　　　　　　　　　　(N = 0～4)<br/>
+　　-wband : band priority encoding<br/>
+　　-bex : ATRAC9(TM) Band Extension<br/>
+　　-slc : Cut extremely low frequency component of LFE<br/>
+<br/>
+・Form of the decoding command<br/>
+　at9sample -d [options] srcfilename  outputfilename<br/>
+　・Option of the decoding command<br/>
+　　-int16 : output 16bit Integer PCM format (default)<br/>
+　　-int24 : output 24bit Integer PCM format<br/>
+　　-float : output IEEE float PCM format<br/>
+<br/>
+Please refer to the document “at9sample User's Guide”.<br/>
+
+</div>
+
+<h2>Note</h2>
+<div class="indent">
+
+- By encoding with low bit rates set, it will be possible to reduce the size of the ATRAC9(TM) data in encoding output,<br/>
+　but for extremely low bit rates, the shortage of bits required for encoding may cause the encoding to fail.<br/>
+　In this case, the bit rate must be increased and re-encoding is required.<br/>
+- Special encode processing is carried out for LFE 5.1 ch and 7.1 ch encoding with the premise of LFE data input.<br/>
+　Because of this, note that correct encoding may not be carried out when data with high frequencies is set to LFE.
+
+</div>
+
+<h2>Changes</h2>
+<ul>
+
+<li>4.011</li>
+
+
+Updated the sample program environment to Visual Studio 2017, Windows 10 SDK (10.0.18362).
+<br>
+
+
+<li>4.010</li>
+
+
+Change the sample program environment to Visual Studio 2015.
+<br>
+
+
+Delete warnings in the sample program.
+<br>
+
+<li>4.000</li>
+
+
+Change Company's name
+<br>
+
+</ul>
+
+<h2>Keywords</h2>
+<ul>
+
+<li>sound</li>
+
+<li>audio</li>
+
+<li>codec</li>
+
+<li>ATRAC9(TM)</li>
+
+<li>ATRAC9(TM) Band Extension</li>
+
+</ul>
+
+</body>
+</html>

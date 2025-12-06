@@ -1,0 +1,151 @@
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<xml>
+  <MSHelp:Attr Name="Locale" Value="kbJapanese"/>
+  <MSHelp:Attr Name="DocSet" Value="Sony Interactive Entertainment"/>
+</xml>
+
+<title>ATRAC9(TM) Library for PC サンプル</title>
+
+<style type="text/css"> 
+ <!-- 
+			body { font-family: Arial, Verdana, Helvetica; font-size: 100% }
+			h1, h2, h3, h4, h5, h6 { color: #000000 }
+			h1 {margin: 8px 0;}
+			h2 {border-bottom:1px solid #999999; padding-bottom: 3px; }
+			a { color: DarkBlue; }
+			a:hover, a:active { color: #FF4500; }
+			a:visited { color: DarkRed; }
+			p {margin:0.8em 0;}
+                        ul { margin: 1px 0 1px 2em; padding: 0; }
+			li { font-size: 100% }
+			pre.source { font-size: 100%; font-family: monospace; background-color: #eee; 
+						   background-repeat: repeat; background-attachment: scroll; 
+						   overflow: auto; display: block; border: 1px dashed #aaa; 
+						   margin: 10px 0; padding: 5px; background-position: 0% }
+			div.title1 { color: #000000; font-size: 180%; padding-left: 5px }
+			div.title2 { color: #000000; font-size: 160%; padding-left: 5px }
+			div.title3 { color: #000000; font-size: 140%; padding-left: 5px }
+			div.note { background-color: MistyRose; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			div.index {  background-color: #eee; border: 1px solid Gray; margin: 10px 0; padding: 3px }
+			span.back-to-top { font-size: 70% }
+			div.indent { font-size: 100%; margin-left: 2em }
+			div.header { font-size: 70%; color:#666666; }
+			table { font-size: 100%; border-collapse: collapse; margin: 5px }
+			td { vertical-align: top; border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; padding-top: 3px; padding-bottom: 3px }
+			th { background-color: #f0f0f0; text-align: center; vertical-align: top; 
+						   border: 1px solid #ccc; padding-left: 4px; padding-right: 4px; 
+		-->
+</style>
+
+</head> 
+<body>
+<div class="header">
+<p>SIE CONFIDENTIAL</p>
+<p>Copyright (C) 2020 Sony Interactive Entertainment Inc.</p>
+</div>
+
+<div class="introduction">
+<h1>ATRAC9(TM) Library for PC サンプル</h1>
+<h2>概要</h2>
+<div class="indent">
+
+Windows 上で ATRAC9(TM) のエンコードおよびデコードを行う Library のサンプルプログラムです。
+
+</div>
+</div>
+
+<h2>詳細</h2>
+<div class="indent">
+
+このサンプルは、 ATRAC9(TM) ライブラリを用いて、エンコードおよびデコードを実行します。<br/>
+本サンプルの出力はエンコードは ATRAC9(TM) ファイル、デコードは wav ファイル出力をします。<br/>
+<br/>
+・エンコードコマンド書式<br/>
+　at9sample -e [options] srcfilename outputfilename<br/>
+　・エンコードコマンドオプション<br/>
+　　-br N : ビットレート<br/>
+　　　　　　(N = 36, 48, 60, 72, 84, 96, 120, 144, 168, 192, 240, 288, 300, 336, 360, 384, 420, 480, 504, 672)<br/>
+　　-supframeon : スーパーフレームモード (デフォルト)<br/>
+　　-supframeoff : スーパーフレームモードオフ<br/>
+　　-dual : デュアルモノエンコード<br/>
+　　-nbands N : エンコードバンド<br/>
+　　　　　　　　　　(N = 3～18)<br/>
+　　-isband N : インテンシティステレオ開始バンド<br/>
+　　　　　　　　　　(N = -1, 3～18)<br/>
+　　-gradmode : エンコードモード(量子化ノイズ勾配)<br/>
+　　　　　　　　　　(N = 0～4)<br/>
+　　-wband : 帯域優先エンコード<br/>
+　　-bex : ATRAC9(TM) Band Extension<br/>
+　　-slc : LFE 極低周波成分カット<br/>
+<br/>
+・デコードコマンド書式<br/>
+　at9sample -d [options] srcfilename  outputfilename<br/>
+　・デコードコマンドオプション<br/>
+　　-int16 : 16bit Integer PCM 形式出力 (デフォルト)<br/>
+　　-int24 : 24bit Integer PCM 形式出力<br/>
+　　-float : IEEE float PCM 形式出力<br/>
+<br/>
+ドキュメントは「at9sample ユーザガイド」ドキュメントを参照してください。<br/>
+
+</div>
+
+<h2>注意事項</h2>
+<div class="indent">
+
+- ビットレートを低く設定してエンコードを行うとエンコード出力の ATRAC9(TM) データサイズを小さくすることができますが、<br/>
+　非常に低いビットレートでは符号化に必要なビットの不足によりエンコードが失敗する場合があります。<br/>
+　この場合は、ビットレートを上げて再エンコードする必要があります。<br/>
+- 5.1ch と 7.1ch の LFE のエンコードでは、 LFE データの入力を前提として特殊なエンコード処理を行っています。<br/>
+　そのため、 LFE に高域周波数を含むデータが設定された場合には正しくエンコードされないおそれがありますので注意してください
+
+</div>
+
+<h2>変更点</h2>
+<ul>
+
+<li>4.011</li>
+
+
+サンプルプログラム環境を Visual Studio 2017, Windows 10 SDK (10.0.18362) に更新しました。
+<br>
+
+<li>4.010</li>
+
+
+サンプルプログラム環境を Visual Studio 2015 に変更しました。
+<br>
+
+
+サンプルプログラムビルド時の warning を削除しました。
+<br>
+
+<li>4.000</li>
+
+
+社名変更
+<br>
+
+</ul>
+
+<h2>キーワード</h2>
+<ul>
+
+<li>sound</li>
+
+<li>audio</li>
+
+<li>codec</li>
+
+<li>ATRAC9(TM)</li>
+
+<li>ATRAC9(TM) Band Extension</li>
+
+</ul>
+
+</body>
+</html>
